@@ -21,9 +21,15 @@
 */
 params ["_radioContainer"];
 
-
-_radioClass = (typeOf ((getItemCargo _radioContainer) select 0) select 0);
-diag_log ["TFAR_static_radios_fnc_instanciatedRadio",_this,_radioClass];
+_radioClass = (((getItemCargo _radioContainer) select 0) select 0);
 if !(_radioClass call TFAR_fnc_isPrototypeRadio) exitWith {_radioClass};
 
-([_radioClass] call TFAR_fnc_instanciateRadios select 0)
+_radioInstanciated = ([_radioClass] call TFAR_fnc_instanciateRadios select 0);
+diag_log ["TFAR_static_radios_fnc_instanciatedRadio",_this,_radioClass,_radioInstanciated];
+if (_radioInstanciated != _radioClass) then {
+    _radioContainer addWeaponCargoGlobal ["arifle_MX_F", 1];
+    clearItemCargoGlobal _radioContainer;
+    _radioContainer addItemCargoGlobal [_radioInstanciated, 1];
+    clearWeaponCargoGlobal _radioContainer;
+};
+_radioInstanciated

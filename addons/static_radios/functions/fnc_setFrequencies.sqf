@@ -24,7 +24,7 @@
 params ["_radioContainer","_frequencies"];
 
 _radio_id = _radioContainer call TFAR_static_radios_fnc_instanciatedRadio;
-
+diag_log ["TFAR_static_radios_fnc_setFrequencies",_this,_radio_id];
 _settings = _radio_id call TFAR_fnc_getSwSettings;
 
 //#TODO if _frequencies has less than 9 elements random-generate the rest

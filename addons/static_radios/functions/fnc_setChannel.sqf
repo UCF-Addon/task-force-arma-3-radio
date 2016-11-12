@@ -24,7 +24,7 @@
 params ["_radioContainer","_channel"];
 
 _radio_id = _radioContainer call TFAR_static_radios_fnc_instanciatedRadio;
-
+diag_log ["TFAR_static_radios_fnc_setChannel",_this,_radio_id];
 private _settings = _radio_id call TFAR_fnc_getSwSettings;
 
 _settings set [ACTIVE_CHANNEL_OFFSET, _channel -1];

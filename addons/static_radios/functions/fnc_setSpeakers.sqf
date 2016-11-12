@@ -23,7 +23,7 @@
 params ["_radioContainer","_enabled"];
 
 _radio_id = _radioContainer call TFAR_static_radios_fnc_instanciatedRadio;
-
+diag_log ["TFAR_static_radios_fnc_setSpeakers",_this,_radio_id];
 private _settings = _radio_id call TFAR_fnc_getSwSettings;
 
 _settings set [TFAR_SW_SPEAKER_OFFSET, _enabled];

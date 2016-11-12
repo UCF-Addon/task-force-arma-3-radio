@@ -17,9 +17,9 @@ class Item_TFAR_anprc152: Item_Base_F {
             property = "staticRadioFrequency"; // Unique config property name saved in SQM
             control = "EditArray"; // UI control base class displayed in Edit Attributes window, points to Cfg3DEN >> Attributes
 
-            expression = QUOTE([ARR_3(_this,call compile _value)] call TFAR_static_radios_fnc_setFrequencies);
+            expression = QUOTE(diag_log "HAAI";[ARR_2(_this,_value)] call TFAR_static_radios_fnc_setFrequencies);
 
-            defaultValue = '["72.2"]';
+            defaultValue = '[["72.2"]]';
 
             validate = "none"; // Validate the value before saving. Can be "none", "expression", "condition", "number" or "variable"
             condition = "objectHasInventoryCargo"; // Condition for attribute to appear (see the table below)
@@ -32,7 +32,7 @@ class Item_TFAR_anprc152: Item_Base_F {
             property = "staticRadioChannel"; // Unique config property name saved in SQM
             control = "Edit"; // UI control base class displayed in Edit Attributes window, points to Cfg3DEN >> Attributes
 
-            expression = QUOTE([ARR_2(_this,_value)] call TFAR_static_radios_fnc_setChannel);
+            expression = QUOTE(diag_log "HAAI2";[ARR_2(_this,_value)] call TFAR_static_radios_fnc_setChannel);
 
             defaultValue = '1';
 
@@ -47,9 +47,9 @@ class Item_TFAR_anprc152: Item_Base_F {
             property = "staticRadioSpeaker"; // Unique config property name saved in SQM
             control = "Checkbox"; // UI control base class displayed in Edit Attributes window, points to Cfg3DEN >> Attributes
 
-            expression = QUOTE([ARR_2(_this,_value)] call TFAR_static_radios_fnc_setSpeakers);
+            expression = QUOTE(diag_log "HAA3";[ARR_2(_this,_value)] call TFAR_static_radios_fnc_setSpeakers);
 
-            defaultValue = '(false)';
+            defaultValue = '(false)';//#TODO try 0
 
             validate = "none"; // Validate the value before saving. Can be "none", "expression", "condition", "number" or "variable"
             condition = "objectHasInventoryCargo"; // Condition for attribute to appear (see the table below)

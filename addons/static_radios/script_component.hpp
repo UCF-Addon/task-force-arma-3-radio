@@ -12,4 +12,9 @@
 #include "\z\tfar\addons\core\script_macros.hpp"
 
 #undef DFUNC
-#define DFUNC(var1) TRIPLES(ADDON,fnc,var1) //Core only used PREFIX instead to keep bwc on function names
+#define DFUNC(var1) TRIPLES(ADDON,fnc,var1)//Core only used PREFIX instead to keep bwc on function names
+#ifdef PREP
+    #undef PREP
+#endif
+
+#define PREP(fncName) [QPATHTOF(functions\DOUBLES(fnc,fncName).sqf), QUOTE(DFUNC(fncName))] call CBA_fnc_compileFunction
