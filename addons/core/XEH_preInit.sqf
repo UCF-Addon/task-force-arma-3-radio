@@ -15,7 +15,7 @@
 ["TF_volumeModifier_forceSpeech", "CHECKBOX", "Activate directSpeech when pressing volume modifier.", "Task Force Arrowhead Radio", false] call CBA_Settings_fnc_init;//#Stringtable
 
 
-if (hasInterface) then {
+if (hasInterface) then {//Clientside Variables
     //PreInit variablesy
     VARIABLE_DEFAULT(tf_radio_channel_name,"TaskForceRadio");
     VARIABLE_DEFAULT(tf_radio_channel_password,"123");
@@ -53,7 +53,7 @@ if (hasInterface) then {
     VARIABLE_DEFAULT(TF_terrain_interception_coefficient,7.0);
 
     MUTEX_INIT(TF_radio_request_mutex);
-
+//#TODO remove unused variables
 
     TF_use_saved_sw_setting = false;
     TF_saved_active_sw_settings = nil;
@@ -117,9 +117,11 @@ if (hasInterface) then {
 
     tf_msSpectatorPerStepMax = 0.035;
 
-    TFAR_previouscurrentUnit = nil;
-
-
     TFAR_objectInterceptionEnabled = true;//#TODO CBA Setting serverside
-
 };
+
+
+if (isServer) then {//Serverside variables
+    missionNamespace setVariable ["TF_server_addon_version",TFAR_ADDON_VERSION,true];
+    TFAR_RadioCountHash = [] call CBA_fnc_hashCreate;
+}
